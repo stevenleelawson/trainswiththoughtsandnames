@@ -9,9 +9,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var realtime = require("./rtd-realtime")
-realtime.VehiclePositions.load((err, feed) => {
-  console.log(arguments)
-})
 
 var app = express();
 
