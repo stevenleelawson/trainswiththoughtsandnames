@@ -32,9 +32,11 @@ const update = (map, context, canvasLayer) =>
   const canvasWidth = canvasLayer.canvas.width
   const canvasHeight = canvasLayer.canvas.height
   context.clearRect(0, 0, canvasWidth, canvasHeight)
-  const worldPoint = getWorldPoint(map, location_me.latitude, location_me.longitude)
-  context.fillStyle = `green`
-  context.fillRect(
-    worldPoint.x, worldPoint.y,
-    .01, .01)
+  // const worldPoint = getWorldPoint(map, location_me.latitude, location_me.longitude)
+  // context.fillStyle = `green`
+  // context.fillRect(
+  //   worldPoint.x, worldPoint.y,
+  //   .01, .01)
+    var bus = new Bus({lat: 39.7392, long: -104.9903, bearing:0});
+    bus.draw(context)
 }
