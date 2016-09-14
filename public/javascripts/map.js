@@ -4,6 +4,6 @@
 // const location = require("./location")
 
 const map = new google.maps.Map(document.getElementById("map"), {
-  center: {lat: 3, lng: 4},
-  zoom: 14,
+  center: {lat: 39.7392, lng: -104.9903},
+  zoom: 12,
 })
