@@ -1,6 +1,7 @@
 "use strict"
 const location_me = {latitude: 39.7392, longitude: -104.9903}
 let lastTime = performance.now()
+
 const transformToMap = (map, context, canvasLayer) =>
 {
   context.setTransform(1, 0, 0, 1, 0, 0)
@@ -30,21 +31,21 @@ const update = _.throttle((map, context, canvasLayer) =>
   transformToMap(map, context, canvasLayer)
   const canvasWidth = canvasLayer.canvas.width
   const canvasHeight = canvasLayer.canvas.height
-  // context.clearRect(0, 0, canvasWidth, canvasHeight)
   $.get("/data")
   .then(function (data) {
+    context.clearRect(0, 0, canvasWidth, canvasHeight)
     var vehicles = data.entity;
     var buses = vehicles.map((entity) => {
       var position = entity.vehicle.position
       return new Bus({
-        lat: position.latitude,
-        long: position.longitude,
-        bearing: position.bearing
-      })
+          lat: position.latitude,
+          long: position.longitude,
+          bearing: position.bearing
+        })
     })
     buses = buses.slice(10)
+    var randomBus = _.sample(buses)
+    randomBus.haveThought()
     buses.forEach((bus) => bus.draw(context))
   })
-  var bus = new Bus({lat: 39.7392, long: -104.9903, bearing:0});
-  bus.draw(context)
 }, 10000)
