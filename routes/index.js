@@ -19,7 +19,7 @@ router.get('/data', function(req, res, next ){
 });
 
 router.get("/quote", function (req, res, next) {
-  axios.get("http://quotesondesign.com/wp-json/posts")
+  axios.get("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1")
   .then(function (response) {
     res.json(response.data)
   })
