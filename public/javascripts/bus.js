@@ -5,11 +5,11 @@ class Bus {
     this.bearing = apiReturn.bearing;
   }
 
-    draw(context) {
-      const worldPoint = getWorldPoint(map, this.lat, this.long);
-      context.fillStyle = `green`
-      context.fillRect(
-        worldPoint.x, worldPoint.y,
-        .01, .01)
+  draw(context) {
+    const worldPoint = getWorldPoint(map, this.lat, this.long);
+    context.fillStyle = `blue`
+    context.fillRect(
+      worldPoint.x, worldPoint.y,
+      .001, .001)
   }
 }

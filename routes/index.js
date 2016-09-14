@@ -6,13 +6,14 @@ var realtime = require("../rtd-realtime")
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
 router.get('/data', function(req, res, next ){
-  realtime.VehiclePositions.load((err, feed) => {
+  realtime.VehiclePositions.load((err, newfeed) => {
     if(err){
       next(err);
       return;
     }
-    res.json(feed)
+    res.json(newfeed)
   });
 });
 
